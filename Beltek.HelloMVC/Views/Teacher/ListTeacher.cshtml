@@ -1,0 +1,32 @@
+﻿@model IEnumerable<Ogretmen>
+@{
+    ViewData["Title"] = "ListTeacher";
+}
+
+<a asp-action="AddTeacher" asp-controller="Teacher" class="btn btn-success">Öğretmen Ekle</a>
+<a asp-action="UpdateTeacher" asp-controller="Teacher" class="btn btn-success">Öğretmen Güncelle</a>
+<h1>List Teacher</h1>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Tckimlik</th>
+            <th>Ad</th>
+            <th>Soyad</th>
+            <th>Alan</th>
+            <th>İşlemler</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var ogt in Model)
+        {
+            <tr>
+                <td>@ogt.Tckimlik</td>
+                <td>@ogt.Ad</td>
+                <td>@ogt.Soyad</td>
+                <td>@ogt.Alan</td>
+                <td><a href="/Teacher/UpdateTeacher/@ogt.Tckimlik" class="btn btn-sm btn-primary">Düzenle</a> <a href="/Teacher/DeleteTeacher/@ogt.Tckimlik" class="btn btn-sm btn-danger" onclick="return confirm('Emin misiniz?')">Sil</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
